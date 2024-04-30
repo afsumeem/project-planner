@@ -1,0 +1,118 @@
+[
+  {
+    "id": 1,
+    "name": "E-commerce Website Redesign",
+    "description": "Revamp the existing e-commerce website to improve user experience and increase sales.",
+    "tasks": [
+      {
+        "id": 101,
+        "title": "Homepage Redesign",
+        "description": "Create a modern and visually appealing homepage layout.",
+        "status": "In Progress",
+        "dueDate": "2024-06-15",
+        "assignee": "John Smith"
+      },
+      {
+        "id": 102,
+        "title": "Product Page Optimization",
+        "description": "Improve product page layout and optimize for better conversion.",
+        "status": "To Do",
+        "dueDate": "2024-06-30",
+        "assignee": "Emily Davis"
+      },
+      {
+        "id": 103,
+        "title": "Mobile Responsive Design",
+        "description": "Ensure the website is fully responsive and provides a seamless experience across devices.",
+        "status": "To Do",
+        "dueDate": "2024-07-10",
+        "assignee": "David Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 201,
+        "name": "John Smith",
+        "role": "UI/UX Designer"
+      },
+      {
+        "id": 202,
+        "name": "Emily Davis",
+        "role": "Frontend Developer"
+      },
+      {
+        "id": 203,
+        "name": "David Johnson",
+        "role": "Backend Developer"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 301,
+        "description": "Homepage Redesign task started by John Smith"
+      },
+      {
+        "id": 302,
+        "description": "Product Page Optimization task assigned to Emily Davis"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Corporate Website Development",
+    "description": "Develop a new corporate website with a modern design and user-friendly interface.",
+    "tasks": [
+      {
+        "id": 104,
+        "title": "Wireframing",
+        "description": "Create wireframes for different pages based on client requirements.",
+        "status": "Done",
+        "dueDate": "2024-05-20",
+        "assignee": "Sophia Brown"
+      },
+      {
+        "id": 105,
+        "title": "Frontend Development",
+        "description": "Implement frontend designs using HTML, CSS, and JavaScript.",
+        "status": "In Progress",
+        "dueDate": "2024-06-30",
+        "assignee": "Michael Johnson"
+      },
+      {
+        "id": 106,
+        "title": "Backend Integration",
+        "description": "Integrate frontend with backend functionalities and CMS.",
+        "status": "To Do",
+        "dueDate": "2024-07-15",
+        "assignee": "Emma Wilson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 204,
+        "name": "Sophia Brown",
+        "role": "UI/UX Designer"
+      },
+      {
+        "id": 205,
+        "name": "Michael Johnson",
+        "role": "Frontend Developer"
+      },
+      {
+        "id": 206,
+        "name": "Emma Wilson",
+        "role": "Backend Developer"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 303,
+        "description": "Frontend Development task started by Michael Johnson"
+      },
+      {
+        "id": 304,
+        "description": "Wireframing task completed by Sophia Brown"
+      }
+    ]
+  }
+]

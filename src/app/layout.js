@@ -1,4 +1,5 @@
 // import { StyleProvider } from "@ant-design/cssinjs";
+import { ReactQueryProvider } from "@/utils/reactQueryProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -10,10 +11,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="h-screen">
-        {/* <StyleProvider hashPriority="high"> */}
-        {children}
-
-        {/* </StyleProvider> */}
+        <ReactQueryProvider>
+          {/* <StyleProvider hashPriority="high"> */}
+          {children}
+          {/* </StyleProvider> */}
+        </ReactQueryProvider>
       </body>
     </html>
   );
