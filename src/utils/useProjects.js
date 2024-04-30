@@ -1,16 +1,46 @@
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
 
 const fetchProjects = async () => {
-  const res = await fetch("http://localhost:5000/projects");
-  if (!res.ok) {
-    throw new Error("Failed to fetch projects");
+  const response = await fetch("http://localhost:5000/projects");
+  return response.json();
+};
+
+const fetchProjectById = async (projectId) => {
+  const response = await fetch(`http://localhost:5000/projects/${projectId}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch project detail");
   }
-  const data = await res.json();
-  return data;
+  return response.json();
 };
 
-const useProjects = () => {
-  return useQuery("projects", fetchProjects);
+//  fetch all projects
+export const useProjects = () => {
+  const {
+    isPending,
+    error,
+    data: projectData = [],
+  } = useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+    enabled: true,
+  });
+
+  return [projectData];
 };
 
-export default useProjects;
+// fetch single project
+export const useProjectById = (projectId) => {
+  const {
+    data: projectData,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["project", projectId],
+    queryFn: () => fetchProjectById(projectId),
+    enabled: !!projectId,
+  });
+
+  return projectData;
+};

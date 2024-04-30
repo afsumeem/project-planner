@@ -1,25 +1,22 @@
 "use client";
 
-import useProjects from "@/utils/useProjects";
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import { useProjects } from "@/utils/useProjects";
+import Link from "next/link";
 
 const ProjectsOverview = () => {
-  const { isPending, error, data } = useQuery({
-    queryKey: ["projects"],
-    queryFn: async () => {
-      const response = await fetch("http://localhost:5000/projects");
-      if (!response.ok) {
-        throw new Error("Failed to fetch projects");
-      }
-      return response.json();
-    },
-  });
-  console.log(data.length);
-
+  const [projectData] = useProjects();
+  // console.log(projectData);
   return (
     <div>
-      <h2>new</h2>
+      {projectData &&
+        projectData.map((data) => (
+          <div key={data.id}>
+            <h2>{data.name}</h2>
+            <Link href={`/dashboard/projects-overview/${data.id}`}>View</Link>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        ))}
     </div>
   );
 };
