@@ -4,14 +4,16 @@
 import AddTaskModal from "@/components/AddTaskModal";
 import EditTaskModal from "@/components/EditTaskModal";
 import projectStore, { useProjectById } from "@/store/store";
-import { Button, Tooltip } from "antd";
+import { Button, Timeline, Tooltip } from "antd";
 import { useState } from "react";
 import ProjectDetailHeader from "@/components/ProjectDetailHeader";
 import { FaCircleCheck } from "react-icons/fa6";
 import { CiEdit } from "react-icons/ci";
 import { FaRegCalendarMinus } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
-import { PiUserCircleLight } from "react-icons/pi";
+import moment from "moment";
+import RecentActivity from "@/components/RecentActivity";
+import TeamMember from "@/components/TeamMember";
 //
 
 //
@@ -108,6 +110,25 @@ const ProjectDetailPage = ({ params }) => {
     setEditVisible(true);
   };
 
+  // Function to handle task card drag start
+  const handleDragStart = (e, task) => {
+    e.dataTransfer.setData("task", JSON.stringify(task)); // Set the dragged task data
+  };
+
+  // Function to handle task card drag over
+  const handleDragOver = (e) => {
+    e.preventDefault(); // Prevent default behavior
+  };
+
+  // Function to handle task card drop
+  const handleDrop = (e, status) => {
+    const droppedTask = JSON.parse(e.dataTransfer.getData("task")); // Get the dropped task data
+    // Update the status of the dropped task
+    projectStore
+      .getState()
+      .editTask(project.id, { ...droppedTask, status: status });
+  };
+
   return (
     <>
       <div>
@@ -143,7 +164,10 @@ const ProjectDetailPage = ({ params }) => {
               <p className="font-bold text-center text-xl m-0 p-0">To Do</p>
             </div>
 
-            <div>
+            <div
+              onDragOver={(e) => handleDragOver(e)}
+              onDrop={(e) => handleDrop(e, "To Do")}
+            >
               {project?.tasks
                 .filter((task) => task.status === filter || filter === "All")
                 .filter(
@@ -164,6 +188,8 @@ const ProjectDetailPage = ({ params }) => {
                 .map((task) => (
                   <div
                     key={task.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, task)}
                     className={`p-5 shadow-md my-2 ${
                       task.status === "To Do"
                         ? "bg-[#FFE4C9]"
@@ -233,11 +259,83 @@ const ProjectDetailPage = ({ params }) => {
             </div>
           </div>
           <div>
-            {" "}
             <div className="bg-[#f7f89a] py-2 rounded">
               <p className="font-bold text-center text-xl m-0 p-0">
                 In Progress
               </p>
+            </div>
+
+            <div
+              onDragOver={(e) => handleDragOver(e)}
+              onDrop={(e) => handleDrop(e, "In Progress")}
+            >
+              {project?.tasks
+                .filter((task) => task.status === "In Progress")
+                .map((task) => (
+                  <div
+                    key={task.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, task)}
+                    className="p-5 shadow-md my-2 bg-[#FFFBDA]"
+                  >
+                    <div className="flex justify-between items-center">
+                      <p
+                        className={`font-semibold text-sm px-4 py-2 m-0 p-0 rounded-lg ${
+                          task.status === "To Do"
+                            ? "bg-[#ffb6ac]"
+                            : task.status === "In Progress"
+                            ? "bg-[#f7f89a]"
+                            : "bg-[#a4ff9c]"
+                        }`}
+                      >
+                        {task.title}
+                      </p>
+                      <Tooltip placement="topLeft" title="Mark as Complete">
+                        <button
+                          onClick={() => markAsComplete(project.id, task.id)}
+                          className="border-0 bg-inherit text-lg cursor-pointer"
+                        >
+                          <FaCircleCheck />
+                        </button>
+                      </Tooltip>
+                    </div>
+
+                    <p>{task.description}</p>
+                    <div>
+                      {task?.assignee ? (
+                        <>
+                          <p className="flex items-center font-semibold">
+                            Assignee:
+                            <span className="ml-2 flex items-center">
+                              <CiUser />
+                              {task.assignee}
+                            </span>
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <Button onClick={() => handleEditClick(task)}>
+                            Assign Member
+                          </Button>
+                        </>
+                      )}
+                    </div>
+                    <p className="font-semibold">Status: {task.status}</p>
+
+                    <div className="flex justify-between items-center gap-1">
+                      <p className="flex gap-1 items-center font-semibold">
+                        <FaRegCalendarMinus />
+                        {task.dueDate}
+                      </p>
+                      <Button
+                        onClick={() => handleEditClick(task)}
+                        className="flex justify-end items-center gap-1 bg-[#071952] text-white"
+                      >
+                        <CiEdit /> Edit
+                      </Button>
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
           <div>
@@ -245,45 +343,109 @@ const ProjectDetailPage = ({ params }) => {
             <div className="bg-[#a4ff9c] py-2 rounded">
               <p className="font-bold text-center text-xl m-0 p-0">Done</p>
             </div>
+            <div
+              onDragOver={(e) => handleDragOver(e)}
+              onDrop={(e) => handleDrop(e, "Done")}
+            >
+              {project?.tasks
+                .filter((task) => task.status === "Done")
+                .map((task) => (
+                  <div
+                    key={task.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, task)}
+                    className="p-5 shadow-md my-2 bg-[#E2F4C5]"
+                  >
+                    <div className="flex justify-between items-center">
+                      <p
+                        className={`font-semibold text-sm px-4 py-2 m-0 p-0 rounded-lg ${
+                          task.status === "To Do"
+                            ? "bg-[#ffb6ac]"
+                            : task.status === "In Progress"
+                            ? "bg-[#f7f89a]"
+                            : "bg-[#a4ff9c]"
+                        }`}
+                      >
+                        {task.title}
+                      </p>
+                      <Tooltip placement="topLeft" title="Mark as Complete">
+                        <button
+                          onClick={() => markAsComplete(project.id, task.id)}
+                          className="border-0 bg-inherit text-lg cursor-pointer"
+                        >
+                          <FaCircleCheck />
+                        </button>
+                      </Tooltip>
+                    </div>
+
+                    <p>{task.description}</p>
+                    <div>
+                      {task?.assignee ? (
+                        <>
+                          <p className="flex items-center font-semibold">
+                            Assignee:
+                            <span className="ml-2 flex items-center">
+                              <CiUser />
+                              {task.assignee}
+                            </span>
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <Button onClick={() => handleEditClick(task)}>
+                            Assign Member
+                          </Button>
+                        </>
+                      )}
+                    </div>
+                    <p className="font-semibold">Status: {task.status}</p>
+
+                    <div className="flex justify-between items-center gap-1">
+                      <p className="flex gap-1 items-center font-semibold">
+                        <FaRegCalendarMinus />
+                        {task.dueDate}
+                      </p>
+                      <Button
+                        onClick={() => handleEditClick(task)}
+                        className="flex justify-end items-center gap-1 bg-[#071952] text-white"
+                      >
+                        <CiEdit /> Edit
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
 
-          <div className="bg-white shadow-2xl h-fit px-5 pt-1 pb-5">
-            <p className="text-[#071952] text-xl font-bold mt-0 mb-4 p-0">
-              Team Members
-            </p>
-            <div className="grid grid-cols-1 gap-4">
-              {project?.teamMembers?.map((team) => (
-                <div
-                  key={team.id}
-                  className="flex gap-2 items-center pb-3 "
-                  style={{ borderBottom: "1px solid gray" }}
-                >
-                  {/* <PiUserCircleLight className="text-2xl text-[#071952]" /> */}
-                  <img
-                    src={team?.img}
-                    className="h-11 rounded-full"
-                    style={{ border: "1px solid #E2F4C5", padding: "2px" }}
-                    alt=""
-                  />
-                  <div>
-                    <p className="m-0 text-lg font-bold">{team.name}</p>
-                    <p className="m-0 text-gray-500 text-sm">{team.role}</p>
-                  </div>
+          {/* display team member and recent activity */}
+          <div>
+            <div className="grid grid-cols-1 gap-5">
+              {/* team member card */}
+              <div className="rounded-lg bg-white shadow-2xl h-fit px-5 pt-1 pb-5">
+                <p className="text-[#071952] text-xl font-bold mt-0 mb-4 p-0">
+                  Team Members
+                </p>
+                <div className="grid grid-cols-1 gap-4">
+                  {project?.teamMembers?.map((team) => (
+                    <TeamMember key={team.id} team={team} />
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* recent activity */}
+              <div className="bg-white shadow-2xl h-fit px-5 pt-2 pb-5 rounded-lg">
+                <p className="text-[#071952] text-xl font-bold mt-0 mb-5 p-0">
+                  Recent Activity
+                </p>
+
+                {project?.recentActivities?.map((activity) => (
+                  <RecentActivity key={activity.id} activity={activity} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
         <hr />
-
-        <p> recentActivities:</p>
-        <div className="grid grid-cols-3">
-          {project?.recentActivities?.map((activity) => (
-            <div key={activity.id}>
-              <h2>{activity.description}</h2>
-            </div>
-          ))}
-        </div>
       </div>
       <AddTaskModal
         visible={visible}
