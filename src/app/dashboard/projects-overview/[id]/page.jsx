@@ -3,8 +3,12 @@
 import AddTaskModal from "@/components/AddTaskModal";
 import EditTaskModal from "@/components/EditTaskModal";
 import projectStore, { useProjectById } from "@/store/store";
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import { useState } from "react";
+import ProjectDetailHeader from "@/components/ProjectDetailHeader";
+import { FaCircleCheck } from "react-icons/fa6";
+import { CiEdit } from "react-icons/ci";
+import { FaRegCalendarMinus } from "react-icons/fa";
 
 //
 
@@ -105,99 +109,110 @@ const ProjectDetailPage = ({ params }) => {
   return (
     <>
       <div>
-        <Button type="primary" onClick={showModal}>
-          Add new task
-        </Button>
-
-        <input
-          type="text"
-          placeholder="Search tasks by title..."
-          value={searchTerm}
-          onChange={handleSearch}
+        {/* project detail header */}
+        <ProjectDetailHeader
+          searchTerm={searchTerm}
+          handleSearch={handleSearch}
+          statusFilter={statusFilter}
+          handleFilter={handleFilter}
+          assigneeFilter={assigneeFilter}
+          project={project}
+          dueDateFilter={dueDateFilter}
+          showModal={showModal}
+          handleDueDateFilter={handleDueDateFilter}
+          handleAssigneeFilter={handleAssigneeFilter}
         />
+        <hr />
 
-        <select
-          value={statusFilter}
-          onChange={(e) => handleFilter(e.target.value)}
-        >
-          <option value="All">All</option>
-          <option value="To Do">Pending</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-        </select>
-
-        <select
-          value={assigneeFilter}
-          onChange={(e) => handleAssigneeFilter(e.target.value)}
-        >
-          <option value="">All Assignees</option>
-          {project?.teamMembers?.map((team) => (
-            <option key={team.id} value={team.name}>
-              {team.name}
-            </option>
-          ))}
-        </select>
-
+        {/* display single project */}
+        <div className="mt-10">
+          <p className="text-[#071952] text-3xl font-bold m-0 p-0">
+            {project?.name}
+          </p>
+          <p className="m-0 p-0 text-xl font-semibold">
+            {project?.description}
+          </p>
+          <hr />
+        </div>
         {/*  */}
 
-        <input
-          type="date"
-          value={dueDateFilter}
-          onChange={(e) => handleDueDateFilter(e.target.value)}
-        />
-        {/*  */}
-        <h2>Project Detail: {project?.name}</h2>
-        <p>{project?.description}</p>
-        <p> tasks:</p>
+        <div className="grid grid-cols-4 mt-10">
+          <div className="grid grid-cols-1">
+            <div className="bg-[#071952] py-2 rounded">
+              <p className="text-white text-center text-xl m-0 p-0">
+                All Tasks
+              </p>
+            </div>
 
-        <div className="grid grid-cols-3">
-          {project?.tasks
-            .filter((task) => task.status === filter || filter === "All")
-            .filter(
-              (task) =>
-                task.assignee === assigneeFilterFromStore ||
-                assigneeFilterFromStore === ""
-            )
-            .filter(
-              (task) =>
-                task.dueDate === dueDateFilterFromStore ||
-                dueDateFilterFromStore === ""
-            )
-            .filter((task) =>
-              task.title
-                .toLowerCase()
-                .includes(searchTermFromStore.toLowerCase())
-            )
-            .map((task) => (
-              <div key={task.id}>
-                <h2>{task.title}</h2>
-                <p>{task.description}</p>
-                <p>{task.status}</p>
-                <p>{task.dueDate}</p>
+            <div>
+              {project?.tasks
+                .filter((task) => task.status === filter || filter === "All")
+                .filter(
+                  (task) =>
+                    task.assignee === assigneeFilterFromStore ||
+                    assigneeFilterFromStore === ""
+                )
+                .filter(
+                  (task) =>
+                    task.dueDate === dueDateFilterFromStore ||
+                    dueDateFilterFromStore === ""
+                )
+                .filter((task) =>
+                  task.title
+                    .toLowerCase()
+                    .includes(searchTermFromStore.toLowerCase())
+                )
+                .map((task) => (
+                  <div key={task.id} className="p-5 shadow-md my-2 bg-sky-100">
+                    <div className="flex justify-between items-center">
+                      <p className="m-0 p-0 bg-sky-200 px-4 py-2 rounded-lg font-semibold text-sm">
+                        {task.title}
+                      </p>
+                      <Tooltip placement="topLeft" title="Mark as Complete">
+                        <button
+                          onClick={() => markAsComplete(project.id, task.id)}
+                          className="border-0 bg-inherit text-lg cursor-pointer"
+                        >
+                          <FaCircleCheck />
+                        </button>
+                      </Tooltip>
+                    </div>
 
-                {task?.assignee ? (
-                  <>
-                    {" "}
-                    <p>Assignee: {task.assignee}</p>
-                  </>
-                ) : (
-                  <>
-                    <Button onClick={() => handleEditClick(task)}>
-                      Assign Member
-                    </Button>
-                  </>
-                )}
+                    <p>{task.description}</p>
+                    <p>{task.status}</p>
 
-                <Button onClick={() => handleEditClick(task)}>Edit task</Button>
-                <button onClick={() => markAsComplete(project.id, task.id)}>
-                  Mark as complete
-                </button>
-              </div>
-            ))}
+                    {task?.assignee ? (
+                      <>
+                        <p>Assignee: {task.assignee}</p>
+                      </>
+                    ) : (
+                      <>
+                        <Button onClick={() => handleEditClick(task)}>
+                          Assign Member
+                        </Button>
+                      </>
+                    )}
+                    <div className="flex justify-between items-center gap-1">
+                      <p className="flex gap-1 items-center font-semibold">
+                        <FaRegCalendarMinus />
+                        {task.dueDate}
+                      </p>
+                      <Button
+                        onClick={() => handleEditClick(task)}
+                        className="flex justify-end items-center gap-1 bg-[#071952] text-white"
+                      >
+                        <CiEdit /> Edit
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <div></div>
+          <div></div>
         </div>
 
-        <p> teamMembers:</p>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-1">
           {project?.teamMembers?.map((team) => (
             <div key={team.id}>
               <h2>{team.name}</h2>
@@ -205,7 +220,6 @@ const ProjectDetailPage = ({ params }) => {
             </div>
           ))}
         </div>
-
         <p> recentActivities:</p>
         <div className="grid grid-cols-3">
           {project?.recentActivities?.map((activity) => (

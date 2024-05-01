@@ -1,7 +1,7 @@
 import { ReactQueryProvider } from "@/utils/reactQueryProvider";
 import "./globals.css";
 
-import { AntStyleProvider } from "@/utils/AntStyleProvider";
+// import { AntStyleProvider } from "@/utils/AntStyleProvider";
 
 export const metadata = {
   title: "Project Planner+",

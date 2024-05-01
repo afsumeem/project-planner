@@ -158,9 +158,6 @@ const ProjectsOverview = () => {
             <p className="my-2 font-bold text-xl">Project Overview</p>
           </div>
         )}
-        // pagination={{
-        // position: [top, bottom],
-        // }}
         dataSource={projects}
       />
       {/* {projects &&
