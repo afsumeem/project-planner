@@ -1,12 +1,31 @@
 "use client";
 
+import AddTaskModal from "@/components/AddTaskModal";
 import projectStore, { useProjectById } from "@/store/store";
+import { Button } from "antd";
 import { useState } from "react";
 
 //
 
 const ProjectDetailPage = ({ params }) => {
   const project = useProjectById(params.id);
+  const [visible, setVisible] = useState(false);
+
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const handleCreate = (values) => {
+    // Add new task action
+    projectStore.getState().addTask(project.id, values);
+    setVisible(false);
+  };
+  //
+
   const [statusFilter, setStatusFilter] = useState("All");
   const [assigneeFilter, setAssigneeFilter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,8 +64,22 @@ const ProjectDetailPage = ({ params }) => {
   const assigneeFilterFromStore = projectStore((state) => state.assigneeFilter);
   const dueDateFilterFromStore = projectStore((state) => state.dueDateFilter);
 
+  //
+  const markAsComplete = (projectId, taskId) => {
+    projectStore.getState().markTaskAsComplete(projectId, taskId);
+  };
+
   return (
     <div>
+      <Button type="primary" onClick={showModal}>
+        Add new task
+      </Button>
+      <AddTaskModal
+        visible={visible}
+        onCreate={handleCreate}
+        onCancel={handleCancel}
+      />
+
       <input
         type="text"
         placeholder="Search tasks by title..."
@@ -111,6 +144,10 @@ const ProjectDetailPage = ({ params }) => {
               <p>{task.status}</p>
               <p>{task.dueDate}</p>
               <p>{task.assignee}</p>
+              <button>Edit task</button>
+              <button onClick={() => markAsComplete(project.id, task.id)}>
+                Mark as complete
+              </button>
             </div>
           ))}
       </div>

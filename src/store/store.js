@@ -49,6 +49,25 @@ const projectStore = create((set) => ({
     set((state) => ({
       dueDateFilter: dueDate,
     })),
+
+  // task status
+  markTaskAsComplete: (projectId, taskId) => {
+    set((state) => {
+      const updatedProjects = state.projects.map((project) => {
+        if (project.id === projectId) {
+          const updatedTasks = project.tasks.map((task) => {
+            if (task.id === taskId) {
+              return { ...task, status: "Done" };
+            }
+            return task;
+          });
+          return { ...project, tasks: updatedTasks };
+        }
+        return project;
+      });
+      return { projects: updatedProjects };
+    });
+  },
 }));
 
 // all project
