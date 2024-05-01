@@ -14,6 +14,7 @@ import { CiUser } from "react-icons/ci";
 import moment from "moment";
 import RecentActivity from "@/components/RecentActivity";
 import TeamMember from "@/components/TeamMember";
+import TaskDetail from "@/components/TaskDetail";
 //
 
 //
@@ -158,15 +159,15 @@ const ProjectDetailPage = ({ params }) => {
         </div>
         {/*  */}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2 mt-10">
           <div className="grid grid-cols-1">
-            <div className="bg-[#ffb6ac] py-2 rounded">
-              <p className="font-bold text-center text-xl m-0 p-0">To Do</p>
+            <div className="bg-[#c7c5c5] py-2 rounded">
+              <p className="font-bold text-center text-xl m-0 p-0">All Task</p>
             </div>
 
             <div
               onDragOver={(e) => handleDragOver(e)}
-              onDrop={(e) => handleDrop(e, "To Do")}
+              onDrop={(e) => handleDrop(e, "")}
             >
               {project?.tasks
                 .filter((task) => task.status === filter || filter === "All")
@@ -190,7 +191,7 @@ const ProjectDetailPage = ({ params }) => {
                     key={task.id}
                     draggable
                     onDragStart={(e) => handleDragStart(e, task)}
-                    className={`p-5 shadow-md my-2 ${
+                    className={`p-4 shadow-md my-2 ${
                       task.status === "To Do"
                         ? "bg-[#FFE4C9]"
                         : task.status === "In Progress"
@@ -198,66 +199,49 @@ const ProjectDetailPage = ({ params }) => {
                         : "bg-[#E2F4C5]"
                     }`}
                   >
-                    <div className="flex justify-between items-center">
-                      <p
-                        className={`font-semibold text-sm px-4 py-2 m-0 p-0 rounded-lg ${
-                          task.status === "To Do"
-                            ? "bg-[#ffb6ac]"
-                            : task.status === "In Progress"
-                            ? "bg-[#f7f89a]"
-                            : "bg-[#a4ff9c]"
-                        }`}
-                      >
-                        {task.title}
-                      </p>
-                      <Tooltip placement="topLeft" title="Mark as Complete">
-                        <button
-                          onClick={() => markAsComplete(project.id, task.id)}
-                          className="border-0 bg-inherit text-lg cursor-pointer"
-                        >
-                          <FaCircleCheck />
-                        </button>
-                      </Tooltip>
-                    </div>
-
-                    <p>{task.description}</p>
-                    <div>
-                      {task?.assignee ? (
-                        <>
-                          <p className="flex items-center font-semibold">
-                            Assignee:
-                            <span className="ml-2 flex items-center">
-                              <CiUser />
-                              {task.assignee}
-                            </span>
-                          </p>
-                        </>
-                      ) : (
-                        <>
-                          <Button onClick={() => handleEditClick(task)}>
-                            Assign Member
-                          </Button>
-                        </>
-                      )}
-                    </div>
-                    <p className="font-semibold">Status: {task.status}</p>
-
-                    <div className="flex justify-between items-center gap-1">
-                      <p className="flex gap-1 items-center font-semibold">
-                        <FaRegCalendarMinus />
-                        {task.dueDate}
-                      </p>
-                      <Button
-                        onClick={() => handleEditClick(task)}
-                        className="flex justify-end items-center gap-1 bg-[#071952] text-white"
-                      >
-                        <CiEdit /> Edit
-                      </Button>
-                    </div>
+                    <TaskDetail
+                      task={task}
+                      handleEditClick={handleEditClick}
+                      markAsComplete={markAsComplete}
+                      project={project}
+                    />
                   </div>
                 ))}
             </div>
           </div>
+
+          {/* to do list */}
+
+          <div>
+            <div className="bg-[#ffb6ac] py-2 rounded">
+              <p className="font-bold text-center text-xl m-0 p-0">To Do</p>
+            </div>
+
+            <div
+              onDragOver={(e) => handleDragOver(e)}
+              onDrop={(e) => handleDrop(e, "To Do")}
+            >
+              {project?.tasks
+                .filter((task) => task.status === "To Do")
+                .map((task) => (
+                  <div
+                    key={task.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, task)}
+                    className="p-4 shadow-md my-2 bg-[#FFFBDA]"
+                  >
+                    <TaskDetail
+                      task={task}
+                      handleEditClick={handleEditClick}
+                      markAsComplete={markAsComplete}
+                      project={project}
+                    />
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* in progress list */}
           <div>
             <div className="bg-[#f7f89a] py-2 rounded">
               <p className="font-bold text-center text-xl m-0 p-0">
@@ -276,68 +260,20 @@ const ProjectDetailPage = ({ params }) => {
                     key={task.id}
                     draggable
                     onDragStart={(e) => handleDragStart(e, task)}
-                    className="p-5 shadow-md my-2 bg-[#FFFBDA]"
+                    className="p-4 shadow-md my-2 bg-[#FFFBDA]"
                   >
-                    <div className="flex justify-between items-center">
-                      <p
-                        className={`font-semibold text-sm px-4 py-2 m-0 p-0 rounded-lg ${
-                          task.status === "To Do"
-                            ? "bg-[#ffb6ac]"
-                            : task.status === "In Progress"
-                            ? "bg-[#f7f89a]"
-                            : "bg-[#a4ff9c]"
-                        }`}
-                      >
-                        {task.title}
-                      </p>
-                      <Tooltip placement="topLeft" title="Mark as Complete">
-                        <button
-                          onClick={() => markAsComplete(project.id, task.id)}
-                          className="border-0 bg-inherit text-lg cursor-pointer"
-                        >
-                          <FaCircleCheck />
-                        </button>
-                      </Tooltip>
-                    </div>
-
-                    <p>{task.description}</p>
-                    <div>
-                      {task?.assignee ? (
-                        <>
-                          <p className="flex items-center font-semibold">
-                            Assignee:
-                            <span className="ml-2 flex items-center">
-                              <CiUser />
-                              {task.assignee}
-                            </span>
-                          </p>
-                        </>
-                      ) : (
-                        <>
-                          <Button onClick={() => handleEditClick(task)}>
-                            Assign Member
-                          </Button>
-                        </>
-                      )}
-                    </div>
-                    <p className="font-semibold">Status: {task.status}</p>
-
-                    <div className="flex justify-between items-center gap-1">
-                      <p className="flex gap-1 items-center font-semibold">
-                        <FaRegCalendarMinus />
-                        {task.dueDate}
-                      </p>
-                      <Button
-                        onClick={() => handleEditClick(task)}
-                        className="flex justify-end items-center gap-1 bg-[#071952] text-white"
-                      >
-                        <CiEdit /> Edit
-                      </Button>
-                    </div>
+                    <TaskDetail
+                      task={task}
+                      handleEditClick={handleEditClick}
+                      markAsComplete={markAsComplete}
+                      project={project}
+                    />
                   </div>
                 ))}
             </div>
           </div>
+
+          {/* done list */}
           <div>
             {" "}
             <div className="bg-[#a4ff9c] py-2 rounded">
@@ -354,64 +290,14 @@ const ProjectDetailPage = ({ params }) => {
                     key={task.id}
                     draggable
                     onDragStart={(e) => handleDragStart(e, task)}
-                    className="p-5 shadow-md my-2 bg-[#E2F4C5]"
+                    className="p-4 shadow-md my-2 bg-[#E2F4C5]"
                   >
-                    <div className="flex justify-between items-center">
-                      <p
-                        className={`font-semibold text-sm px-4 py-2 m-0 p-0 rounded-lg ${
-                          task.status === "To Do"
-                            ? "bg-[#ffb6ac]"
-                            : task.status === "In Progress"
-                            ? "bg-[#f7f89a]"
-                            : "bg-[#a4ff9c]"
-                        }`}
-                      >
-                        {task.title}
-                      </p>
-                      <Tooltip placement="topLeft" title="Mark as Complete">
-                        <button
-                          onClick={() => markAsComplete(project.id, task.id)}
-                          className="border-0 bg-inherit text-lg cursor-pointer"
-                        >
-                          <FaCircleCheck />
-                        </button>
-                      </Tooltip>
-                    </div>
-
-                    <p>{task.description}</p>
-                    <div>
-                      {task?.assignee ? (
-                        <>
-                          <p className="flex items-center font-semibold">
-                            Assignee:
-                            <span className="ml-2 flex items-center">
-                              <CiUser />
-                              {task.assignee}
-                            </span>
-                          </p>
-                        </>
-                      ) : (
-                        <>
-                          <Button onClick={() => handleEditClick(task)}>
-                            Assign Member
-                          </Button>
-                        </>
-                      )}
-                    </div>
-                    <p className="font-semibold">Status: {task.status}</p>
-
-                    <div className="flex justify-between items-center gap-1">
-                      <p className="flex gap-1 items-center font-semibold">
-                        <FaRegCalendarMinus />
-                        {task.dueDate}
-                      </p>
-                      <Button
-                        onClick={() => handleEditClick(task)}
-                        className="flex justify-end items-center gap-1 bg-[#071952] text-white"
-                      >
-                        <CiEdit /> Edit
-                      </Button>
-                    </div>
+                    <TaskDetail
+                      task={task}
+                      handleEditClick={handleEditClick}
+                      markAsComplete={markAsComplete}
+                      project={project}
+                    />
                   </div>
                 ))}
             </div>

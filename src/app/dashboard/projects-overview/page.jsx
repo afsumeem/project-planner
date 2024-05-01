@@ -14,10 +14,10 @@ const ProjectsOverview = () => {
   const { projects } = useAllProjects();
 
   // delete project
-  // const handleDelete = (projectId) => {
-  //   console.log(projectId);
-  //   projectStore.deleteProject(projectId);
-  // };
+  const handleDelete = (projectId) => {
+    console.log(projectId);
+    projectStore.getState().deleteProject(projectId);
+  };
 
   //
   const columns = [
@@ -45,7 +45,7 @@ const ProjectsOverview = () => {
       dataIndex: "name",
       key: "name",
       render: (text, record, index) => ({
-        children: <a>{text}</a>,
+        children: <a className="text-blue-800 hover:text-blue-800">{text}</a>,
         props: {
           style: {
             background: index % 2 === 0 ? "#f0f0f0" : "#D2DAFF",
@@ -126,7 +126,7 @@ const ProjectsOverview = () => {
       render: (text, record, index) => ({
         children: (
           <button
-            className="border-0 bg-inherit font-bold flex items-center justify-center w-full gap-1 text-red-600"
+            className="border-0 bg-inherit font-bold flex items-center justify-center w-full gap-1 text-red-600 cursor-pointer"
             onClick={() => handleDelete(record.id)}
           >
             <RiDeleteBin6Line /> Delete
