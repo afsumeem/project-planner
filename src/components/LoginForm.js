@@ -1,19 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, message } from "antd";
+import { FaRegCopy } from "react-icons/fa";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const router = useRouter();
+  // user
+  const [userId, setUserId] = useState("test@gmail.com");
+  const [password, setPassword] = useState("abcd1234");
+  const [userIdCopied, setUserIdCopied] = useState(false);
+  const [passwordCopied, setPasswordCopied] = useState(false);
+
+  // user
+  const handleCopyUserId = () => {
+    setUserIdCopied(true);
+    setTimeout(() => setUserIdCopied(false), 1000);
+  };
+
+  const handleCopyPassword = () => {
+    setPasswordCopied(true);
+    setTimeout(() => setPasswordCopied(false), 1000);
+  };
 
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     // user authentication
     const { email, password } = values;
-    if (email === "afsana@gmail.com" && password === "abcd1234") {
+    if (email === "test@gmail.com" && password === "abcd1234") {
       message.success("Login successful");
       router.push("/dashboard");
     } else {
@@ -69,6 +87,22 @@ const LoginForm = () => {
             </Button>
           </Form.Item>
         </Form>
+        <div className="">
+          <CopyToClipboard text={userId} onCopy={handleCopyUserId}>
+            <div className="flex gap-2 cursor-pointer">
+              <p className="text-sm text-white">{userId}</p>
+              <FaRegCopy className="text-white mt-1 " />
+            </div>
+          </CopyToClipboard>
+
+          <CopyToClipboard text={password} onCopy={handleCopyPassword}>
+            <div className="flex gap-2 cursor-pointer">
+              <p className="text-sm text-white">{password} </p>
+
+              <FaRegCopy className="text-white mt-1" />
+            </div>
+          </CopyToClipboard>
+        </div>
       </div>
     </div>
   );
