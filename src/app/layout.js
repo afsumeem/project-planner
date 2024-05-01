@@ -1,6 +1,7 @@
-// import { StyleProvider } from "@ant-design/cssinjs";
 import { ReactQueryProvider } from "@/utils/reactQueryProvider";
 import "./globals.css";
+
+import { AntStyleProvider } from "@/utils/AntStyleProvider";
 
 export const metadata = {
   title: "Project Planner+",
@@ -10,12 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="h-screen">
-        <ReactQueryProvider>
-          {/* <StyleProvider hashPriority="high"> */}
-          {children}
-          {/* </StyleProvider> */}
-        </ReactQueryProvider>
+      <body className="h-screen m-0 p-0">
+        {/* <AntStyleProvider> */}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+        {/* </AntStyleProvider> */}
       </body>
     </html>
   );

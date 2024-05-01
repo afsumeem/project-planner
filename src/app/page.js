@@ -1,12 +1,10 @@
 import React from "react";
-import dynamic from "next/dynamic";
+
 import LoginForm from "@/components/LoginForm";
+import "antd/dist/reset.css";
 
+//
 const Home = () => {
-  // const LoginForm = dynamic(() => import("../components/LoginForm"), {
-  //   ssr: false,
-  // });
-
   return (
     <main className="flex items-center justify-center h-screen">
       <LoginForm />
