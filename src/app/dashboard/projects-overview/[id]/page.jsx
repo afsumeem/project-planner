@@ -1,15 +1,20 @@
 "use client";
 
 import AddTaskModal from "@/components/AddTaskModal";
+import EditTaskModal from "@/components/EditTaskModal";
 import projectStore, { useProjectById } from "@/store/store";
 import { Button } from "antd";
 import { useState } from "react";
 
 //
 
+//
+
 const ProjectDetailPage = ({ params }) => {
   const project = useProjectById(params.id);
   const [visible, setVisible] = useState(false);
+  const [editVisible, setEditVisible] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
 
   const showModal = () => {
     setVisible(true);
@@ -20,14 +25,14 @@ const ProjectDetailPage = ({ params }) => {
   };
 
   const handleCreate = (values) => {
-    const newTaskId = project.tasks.length + 101;
+    const newTaskId = project?.tasks?.length + 101;
     const newTask = {
       id: newTaskId,
-      title: values.title,
-      description: values.description,
+      title: values?.title,
+      description: values?.description,
       status: "To Do",
-      dueDate: values.dueDate.format("YYYY-MM-DD"),
-      assignee: values.assignee,
+      dueDate: values?.dueDate.format("YYYY-MM-DD"),
+      assignee: values?.assignee,
     };
     projectStore.getState().addTask(project.id, newTask);
     setVisible(false);
@@ -75,6 +80,26 @@ const ProjectDetailPage = ({ params }) => {
   //
   const markAsComplete = (projectId, taskId) => {
     projectStore.getState().markTaskAsComplete(projectId, taskId);
+  };
+
+  //
+
+  const handleEdit = (values) => {
+    const editedTask = {
+      ...selectedTask,
+      title: values?.title,
+      description: values?.description,
+      status: values?.status,
+      // dueDate: values?.dueDate?.format("YYYY-MM-DD"),
+      assignee: values?.assignee,
+    };
+    projectStore.getState().editTask(project.id, editedTask);
+    setEditVisible(false);
+  };
+
+  const handleEditClick = (task) => {
+    setSelectedTask(task);
+    setEditVisible(true);
   };
 
   return (
@@ -149,8 +174,21 @@ const ProjectDetailPage = ({ params }) => {
                 <p>{task.description}</p>
                 <p>{task.status}</p>
                 <p>{task.dueDate}</p>
-                <p>{task.assignee}</p>
-                <button>Edit task</button>
+
+                {task?.assignee ? (
+                  <>
+                    {" "}
+                    <p>Assignee: {task.assignee}</p>
+                  </>
+                ) : (
+                  <>
+                    <Button onClick={() => handleEditClick(task)}>
+                      Assign Member
+                    </Button>
+                  </>
+                )}
+
+                <Button onClick={() => handleEditClick(task)}>Edit task</Button>
                 <button onClick={() => markAsComplete(project.id, task.id)}>
                   Mark as complete
                 </button>
@@ -181,6 +219,14 @@ const ProjectDetailPage = ({ params }) => {
         visible={visible}
         onCreate={handleCreate}
         onCancel={handleCancel}
+        teamMembers={project?.teamMembers}
+      />
+
+      <EditTaskModal
+        visible={editVisible}
+        onCreate={handleEdit}
+        onCancel={handleCancel}
+        task={selectedTask}
         teamMembers={project?.teamMembers}
       />
     </>

@@ -1,9 +1,19 @@
 import React from "react";
-import { Modal, Form, Input, Select, DatePicker } from "antd";
+import { Modal, Form, Input, DatePicker, Select } from "antd";
+
 const { Option } = Select;
 
-const AddTaskModal = ({ visible, onCreate, onCancel, teamMembers }) => {
+const EditTaskModal = ({ visible, onCreate, onCancel, task, teamMembers }) => {
   const [form] = Form.useForm();
+
+  // Set initial form values
+  form.setFieldsValue({
+    title: task?.title,
+    description: task?.description,
+    status: task?.status,
+    dueDate: task?.dueDate,
+    assignee: task?.assignee,
+  });
 
   const handleOk = () => {
     form
@@ -20,13 +30,13 @@ const AddTaskModal = ({ visible, onCreate, onCancel, teamMembers }) => {
   return (
     <Modal
       open={visible}
-      title="Add New Task"
-      okText="Add"
+      title="Edit Task"
+      okText="Save"
       cancelText="Cancel"
       onCancel={onCancel}
       onOk={handleOk}
     >
-      <Form form={form} layout="vertical" name="addTaskForm">
+      <Form form={form} layout="vertical" name="editTaskForm">
         <Form.Item
           name="title"
           label="Title"
@@ -41,18 +51,28 @@ const AddTaskModal = ({ visible, onCreate, onCancel, teamMembers }) => {
         >
           <Input.TextArea />
         </Form.Item>
-
         <Form.Item
+          name="status"
+          label="Status"
+          rules={[{ required: true, message: "Please select the status" }]}
+        >
+          <Select>
+            <Option value="To Do">To Do</Option>
+            <Option value="In Progress">In Progress</Option>
+            <Option value="Completed">Completed</Option>
+          </Select>
+        </Form.Item>
+        {/* <Form.Item
           name="dueDate"
           label="Due Date"
-          rules={[{ required: true, message: "Please select the due date" }]}
+          rules={[{ message: "Please select the due date" }]}
         >
           <DatePicker />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item
           name="assignee"
           label="Assignee"
-          rules={[{ message: "Please select the assignee" }]}
+          rules={[{ required: true, message: "Please select the assignee" }]}
         >
           <Select>
             {teamMembers?.map((member) => (
@@ -67,4 +87,4 @@ const AddTaskModal = ({ visible, onCreate, onCancel, teamMembers }) => {
   );
 };
 
-export default AddTaskModal;
+export default EditTaskModal;

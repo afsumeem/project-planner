@@ -69,7 +69,7 @@ const projectStore = create((set) => ({
     });
   },
 
-  // Action to add a new task to a project
+  // add a new task
   addTask: (projectId, newTask) => {
     set((state) => {
       const updatedProjects = state.projects.map((project) => {
@@ -87,6 +87,22 @@ const projectStore = create((set) => ({
       return { projects: updatedProjects };
     });
   },
+
+  //
+  // Edit existing task
+  editTask: (projectId, editedTask) =>
+    set((state) => ({
+      projects: state.projects.map((project) =>
+        project.id === projectId
+          ? {
+              ...project,
+              tasks: project.tasks.map((task) =>
+                task.id === editedTask.id ? editedTask : task
+              ),
+            }
+          : project
+      ),
+    })),
 }));
 
 // all project
