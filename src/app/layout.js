@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="h-screen m-0 p-0">
+      <body className="h-full m-0 p-0">
         {/* <AntStyleProvider> */}
         <ReactQueryProvider>{children}</ReactQueryProvider>
         {/* </AntStyleProvider> */}

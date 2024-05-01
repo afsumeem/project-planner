@@ -114,5 +114,759 @@
         "description": "Wireframing task completed by Sophia Brown"
       }
     ]
+  },
+  {
+    "id": 3,
+    "name": "Mobile App Development",
+    "description": "Create a mobile application for iOS and Android platforms.",
+    "tasks": [
+      {
+        "id": 107,
+        "title": "UI/UX Design",
+        "description": "Design intuitive and user-friendly interfaces for the mobile app.",
+        "status": "In Progress",
+        "dueDate": "2024-08-10",
+        "assignee": "Sophia Brown"
+      },
+      {
+        "id": 108,
+        "title": "Backend Development",
+        "description": "Develop backend APIs and database structures to support the mobile app functionality.",
+        "status": "To Do",
+        "dueDate": "2024-09-05",
+        "assignee": "David Johnson"
+      },
+      {
+        "id": 109,
+        "title": "Testing and Deployment",
+        "description": "Test the mobile app thoroughly and deploy it to app stores.",
+        "status": "To Do",
+        "dueDate": "2024-09-20",
+        "assignee": "Emily Davis"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 207,
+        "name": "Sophia Brown",
+        "role": "UI/UX Designer"
+      },
+      {
+        "id": 208,
+        "name": "David Johnson",
+        "role": "Backend Developer"
+      },
+      {
+        "id": 209,
+        "name": "Emily Davis",
+        "role": "Quality Assurance"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 305,
+        "description": "UI/UX Design task started by Sophia Brown"
+      },
+      {
+        "id": 306,
+        "description": "Backend Development task assigned to David Johnson"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Digital Marketing Campaign",
+    "description": "Plan and execute a comprehensive digital marketing campaign to promote the brand and increase online visibility.",
+    "tasks": [
+      {
+        "id": 110,
+        "title": "Market Research",
+        "description": "Conduct market research to identify target audience and competitors.",
+        "status": "Done",
+        "dueDate": "2024-07-15",
+        "assignee": "John Smith"
+      },
+      {
+        "id": 111,
+        "title": "Content Creation",
+        "description": "Create engaging and relevant content for various digital channels.",
+        "status": "In Progress",
+        "dueDate": "2024-08-10",
+        "assignee": "Emily Davis"
+      },
+      {
+        "id": 112,
+        "title": "Social Media Management",
+        "description": "Manage social media accounts and engage with followers.",
+        "status": "To Do",
+        "dueDate": "2024-09-05",
+        "assignee": "Michael Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 210,
+        "name": "John Smith",
+        "role": "Marketing Specialist"
+      },
+      {
+        "id": 211,
+        "name": "Emily Davis",
+        "role": "Content Writer"
+      },
+      {
+        "id": 212,
+        "name": "Michael Johnson",
+        "role": "Social Media Manager"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 307,
+        "description": "Market Research task completed by John Smith"
+      },
+      {
+        "id": 308,
+        "description": "Content Creation task started by Emily Davis"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Software Development",
+    "description": "Develop custom software solutions tailored to client requirements.",
+    "tasks": [
+      {
+        "id": 113,
+        "title": "Requirement Analysis",
+        "description": "Gather and analyze client requirements to define project scope.",
+        "status": "Done",
+        "dueDate": "2024-06-30",
+        "assignee": "David Johnson"
+      },
+      {
+        "id": 114,
+        "title": "UI/UX Design",
+        "description": "Design intuitive and user-friendly interfaces for the software application.",
+        "status": "In Progress",
+        "dueDate": "2024-07-15",
+        "assignee": "Sophia Brown"
+      },
+      {
+        "id": 115,
+        "title": "Backend Development",
+        "description": "Develop backend logic and database structures to support the software functionality.",
+        "status": "To Do",
+        "dueDate": "2024-08-10",
+        "assignee": "Michael Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 213,
+        "name": "David Johnson",
+        "role": "Business Analyst"
+      },
+      {
+        "id": 214,
+        "name": "Sophia Brown",
+        "role": "UI/UX Designer"
+      },
+      {
+        "id": 215,
+        "name": "Michael Johnson",
+        "role": "Backend Developer"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 309,
+        "description": "Requirement Analysis task completed by David Johnson"
+      },
+      {
+        "id": 310,
+        "description": "UI/UX Design task started by Sophia Brown"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Product Launch Campaign",
+    "description": "Plan and execute a marketing campaign to launch a new product into the market.",
+    "tasks": [
+      {
+        "id": 116,
+        "title": "Product Research",
+        "description": "Conduct market research to identify potential product opportunities.",
+        "status": "Done",
+        "dueDate": "2024-07-10",
+        "assignee": "John Smith"
+      },
+      {
+        "id": 117,
+        "title": "Marketing Strategy",
+        "description": "Develop a comprehensive marketing strategy for the product launch.",
+        "status": "In Progress",
+        "dueDate": "2024-08-05",
+        "assignee": "Emily Davis"
+      },
+      {
+        "id": 118,
+        "title": "Campaign Execution",
+        "description": "Execute marketing campaigns across various channels.",
+        "status": "To Do",
+        "dueDate": "2024-09-01",
+        "assignee": "Michael Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 216,
+        "name": "John Smith",
+        "role": "Product Manager"
+      },
+      {
+        "id": 217,
+        "name": "Emily Davis",
+        "role": "Marketing Specialist"
+      },
+      {
+        "id": 218,
+        "name": "Michael Johnson",
+        "role": "Digital Marketer"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 311,
+        "description": "Product Research task completed by John Smith"
+      },
+      {
+        "id": 312,
+        "description": "Marketing Strategy task started by Emily Davis"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Website Maintenance",
+    "description": "Provide ongoing maintenance and support services for the company's website.",
+    "tasks": [
+      {
+        "id": 119,
+        "title": "Bug Fixes",
+        "description": "Identify and fix bugs and issues reported by users.",
+        "status": "In Progress",
+        "dueDate": "2024-08-15",
+        "assignee": "Sophia Brown"
+      },
+      {
+        "id": 120,
+        "title": "Performance Optimization",
+        "description": "Optimize website performance to ensure fast loading times.",
+        "status": "To Do",
+        "dueDate": "2024-09-10",
+        "assignee": "David Johnson"
+      },
+      {
+        "id": 121,
+        "title": "Content Updates",
+        "description": "Update website content and graphics as per client requests.",
+        "status": "To Do",
+        "dueDate": "2024-09-25",
+        "assignee": "Emily Davis"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 219,
+        "name": "Sophia Brown",
+        "role": "Web Developer"
+      },
+      {
+        "id": 220,
+        "name": "David Johnson",
+        "role": "System Administrator"
+      },
+      {
+        "id": 221,
+        "name": "Emily Davis",
+        "role": "Content Manager"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 313,
+        "description": "Bug Fixes task started by Sophia Brown"
+      },
+      {
+        "id": 314,
+        "description": "Performance Optimization task assigned to David Johnson"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Social Media Marketing",
+    "description": "Create and manage social media campaigns to increase brand awareness and engagement.",
+    "tasks": [
+      {
+        "id": 122,
+        "title": "Content Creation",
+        "description": "Create engaging content for social media posts and advertisements.",
+        "status": "In Progress",
+        "dueDate": "2024-08-20",
+        "assignee": "John Smith"
+      },
+      {
+        "id": 123,
+        "title": "Ad Campaign Management",
+        "description": "Manage advertising campaigns on social media platforms.",
+        "status": "To Do",
+        "dueDate": "2024-09-15",
+        "assignee": "Emily Davis"
+      },
+      {
+        "id": 124,
+        "title": "Community Engagement",
+        "description": "Engage with the audience and respond to comments and messages.",
+        "status": "To Do",
+        "dueDate": "2024-09-30",
+        "assignee": "David Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 222,
+        "name": "John Smith",
+        "role": "Social Media Manager"
+      },
+      {
+        "id": 223,
+        "name": "Emily Davis",
+        "role": "Marketing Specialist"
+      },
+      {
+        "id": 224,
+        "name": "David Johnson",
+        "role": "Community Manager"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 315,
+        "description": "Content Creation task started by John Smith"
+      },
+      {
+        "id": 316,
+        "description": "Ad Campaign Management task assigned to Emily Davis"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Brand Identity Design",
+    "description": "Design a brand identity including logo, colors, and typography.",
+    "tasks": [
+      {
+        "id": 125,
+        "title": "Logo Design",
+        "description": "Create a unique and memorable logo that represents the brand.",
+        "status": "In Progress",
+        "dueDate": "2024-09-05",
+        "assignee": "Sophia Brown"
+      },
+      {
+        "id": 126,
+        "title": "Color Palette",
+        "description": "Define a color palette that reflects the brand's personality and values.",
+        "status": "To Do",
+        "dueDate": "2024-09-20",
+        "assignee": "Michael Johnson"
+      },
+      {
+        "id": 127,
+        "title": "Typography",
+        "description": "Select appropriate fonts for the brand's logo and marketing materials.",
+        "status": "To Do",
+        "dueDate": "2024-10-05",
+        "assignee": "David Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 225,
+        "name": "Sophia Brown",
+        "role": "Graphic Designer"
+      },
+      {
+        "id": 226,
+        "name": "Michael Johnson",
+        "role": "Brand Strategist"
+      },
+      {
+        "id": 227,
+        "name": "David Johnson",
+        "role": "Marketing Consultant"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 317,
+        "description": "Logo Design task started by Sophia Brown"
+      },
+      {
+        "id": 318,
+        "description": "Color Palette task assigned to Michael Johnson"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Event Management",
+    "description": "Plan and coordinate corporate events and conferences.",
+    "tasks": [
+      {
+        "id": 128,
+        "title": "Event Planning",
+        "description": "Develop event concept and plan logistics including venue, catering, and guest list.",
+        "status": "In Progress",
+        "dueDate": "2024-09-10",
+        "assignee": "John Smith"
+      },
+      {
+        "id": 129,
+        "title": "Marketing and Promotion",
+        "description": "Promote the event through various channels to attract attendees.",
+        "status": "To Do",
+        "dueDate": "2024-09-30",
+        "assignee": "Emily Davis"
+      },
+      {
+        "id": 130,
+        "title": "On-site Management",
+        "description": "Coordinate on-site activities and ensure smooth execution of the event.",
+        "status": "To Do",
+        "dueDate": "2024-10-15",
+        "assignee": "David Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 228,
+        "name": "John Smith",
+        "role": "Event Planner"
+      },
+      {
+        "id": 229,
+        "name": "Emily Davis",
+        "role": "Marketing Specialist"
+      },
+      {
+        "id": 230,
+        "name": "David Johnson",
+        "role": "Event Coordinator"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 319,
+        "description": "Event Planning task started by John Smith"
+      },
+      {
+        "id": 320,
+        "description": "Marketing and Promotion task assigned to Emily Davis"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Content Marketing Strategy",
+    "description": "Develop a content marketing strategy to attract and engage target audience.",
+    "tasks": [
+      {
+        "id": 131,
+        "title": "Content Audit",
+        "description": "Evaluate existing content and identify gaps and areas for improvement.",
+        "status": "In Progress",
+        "dueDate": "2024-09-15",
+        "assignee": "Sophia Brown"
+      },
+      {
+        "id": 132,
+        "title": "Content Planning",
+        "description": "Create a content calendar and plan topics and formats for upcoming content.",
+        "status": "To Do",
+        "dueDate": "2024-09-30",
+        "assignee": "Michael Johnson"
+      },
+      {
+        "id": 133,
+        "title": "Content Creation",
+        "description": "Produce high-quality content including articles, videos, and infographics.",
+        "status": "To Do",
+        "dueDate": "2024-10-15",
+        "assignee": "David Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 231,
+        "name": "Sophia Brown",
+        "role": "Content Strategist"
+      },
+      {
+        "id": 232,
+        "name": "Michael Johnson",
+        "role": "Content Creator"
+      },
+      {
+        "id": 233,
+        "name": "David Johnson",
+        "role": "Editor"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 321,
+        "description": "Content Audit task started by Sophia Brown"
+      },
+      {
+        "id": 322,
+        "description": "Content Planning task assigned to Michael Johnson"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Search Engine Optimization (SEO)",
+    "description": "Optimize website and content to improve search engine rankings and increase organic traffic.",
+    "tasks": [
+      {
+        "id": 134,
+        "title": "Keyword Research",
+        "description": "Identify relevant keywords and phrases to target for SEO.",
+        "status": "In Progress",
+        "dueDate": "2024-09-20",
+        "assignee": "John Smith"
+      },
+      {
+        "id": 135,
+        "title": "On-page Optimization",
+        "description": "Optimize website content, meta tags, and structure for better search visibility.",
+        "status": "To Do",
+        "dueDate": "2024-10-05",
+        "assignee": "Emily Davis"
+      },
+      {
+        "id": 136,
+        "title": "Link Building",
+        "description": "Acquire high-quality backlinks to improve domain authority and search rankings.",
+        "status": "To Do",
+        "dueDate": "2024-10-20",
+        "assignee": "Michael Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 234,
+        "name": "John Smith",
+        "role": "SEO Specialist"
+      },
+      {
+        "id": 235,
+        "name": "Emily Davis",
+        "role": "Content Writer"
+      },
+      {
+        "id": 236,
+        "name": "Michael Johnson",
+        "role": "Link Building Specialist"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 323,
+        "description": "Keyword Research task started by John Smith"
+      },
+      {
+        "id": 324,
+        "description": "On-page Optimization task assigned to Emily Davis"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Email Marketing Campaign",
+    "description": "Create and execute email marketing campaigns to nurture leads and drive conversions.",
+    "tasks": [
+      {
+        "id": 137,
+        "title": "Email List Building",
+        "description": "Build and segment email lists based on audience demographics and interests.",
+        "status": "In Progress",
+        "dueDate": "2024-09-25",
+        "assignee": "Sophia Brown"
+      },
+      {
+        "id": 138,
+        "title": "Email Content Creation",
+        "description": "Create engaging email content including newsletters and promotional emails.",
+        "status": "To Do",
+        "dueDate": "2024-10-10",
+        "assignee": "David Johnson"
+      },
+      {
+        "id": 139,
+        "title": "Email Automation",
+        "description": "Set up automated email workflows to deliver targeted content to subscribers.",
+        "status": "To Do",
+        "dueDate": "2024-10-25",
+        "assignee": "Emily Davis"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 237,
+        "name": "Sophia Brown",
+        "role": "Email Marketing Specialist"
+      },
+      {
+        "id": 238,
+        "name": "David Johnson",
+        "role": "Content Writer"
+      },
+      {
+        "id": 239,
+        "name": "Emily Davis",
+        "role": "Marketing Automation Specialist"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 325,
+        "description": "Email List Building task started by Sophia Brown"
+      },
+      {
+        "id": 326,
+        "description": "Email Content Creation task assigned to David Johnson"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Product Design and Development",
+    "description": "Design and develop innovative products from concept to launch.",
+    "tasks": [
+      {
+        "id": 140,
+        "title": "Conceptualization",
+        "description": "Brainstorm ideas and concepts for new product development.",
+        "status": "In Progress",
+        "dueDate": "2024-10-01",
+        "assignee": "John Smith"
+      },
+      {
+        "id": 141,
+        "title": "Prototyping",
+        "description": "Create prototypes to validate product ideas and gather feedback.",
+        "status": "To Do",
+        "dueDate": "2024-10-20",
+        "assignee": "Sophia Brown"
+      },
+      {
+        "id": 142,
+        "title": "Product Testing",
+        "description": "Conduct extensive testing to ensure product quality and functionality.",
+        "status": "To Do",
+        "dueDate": "2024-11-05",
+        "assignee": "Michael Johnson"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 240,
+        "name": "John Smith",
+        "role": "Product Manager"
+      },
+      {
+        "id": 241,
+        "name": "Sophia Brown",
+        "role": "Product Designer"
+      },
+      {
+        "id": 242,
+        "name": "Michael Johnson",
+        "role": "Quality Assurance"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 327,
+        "description": "Conceptualization task started by John Smith"
+      },
+      {
+        "id": 328,
+        "description": "Prototyping task assigned to Sophia Brown"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Video Production",
+    "description": "Produce high-quality videos for marketing, advertising, and training purposes.",
+    "tasks": [
+      {
+        "id": 143,
+        "title": "Script Writing",
+        "description": "Write compelling scripts for video content.",
+        "status": "In Progress",
+        "dueDate": "2024-10-10",
+        "assignee": "Emily Davis"
+      },
+      {
+        "id": 144,
+        "title": "Video Shooting",
+        "description": "Capture footage for videos using professional equipment and techniques.",
+        "status": "To Do",
+        "dueDate": "2024-10-25",
+        "assignee": "Michael Johnson"
+      },
+      {
+        "id": 145,
+        "title": "Editing and Post-production",
+        "description": "Edit video footage and add effects, graphics, and sound to enhance quality.",
+        "status": "To Do",
+        "dueDate": "2024-11-10",
+        "assignee": "Sophia Brown"
+      }
+    ],
+    "teamMembers": [
+      {
+        "id": 243,
+        "name": "Emily Davis",
+        "role": "Content Writer"
+      },
+      {
+        "id": 244,
+        "name": "Michael Johnson",
+        "role": "Videographer"
+      },
+      {
+        "id": 245,
+        "name": "Sophia Brown",
+        "role": "Video Editor"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 329,
+        "description": "Script Writing task started by Emily Davis"
+      },
+      {
+        "id": 330,
+        "description": "Video Shooting task assigned to Michael Johnson"
+      }
+    ]
   }
 ]

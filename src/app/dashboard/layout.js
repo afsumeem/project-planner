@@ -1,30 +1,37 @@
 "use client";
 
-import React from "react";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
+import { GoProjectSymlink } from "react-icons/go";
+
+import { Avatar } from "antd";
+
 import { Layout, Menu, theme } from "antd";
+import Link from "next/link";
 const { Header, Content, Footer, Sider } = Layout;
+
 const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  UserOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
-}));
+  {
+    key: "1",
+    icon: <UserOutlined />,
+    label: "Dashboard",
+    route: "/dashboard",
+  },
+  {
+    key: "2",
+    icon: <GoProjectSymlink />,
+    label: "Project Overview",
+    route: "/dashboard/projects-overview",
+  },
+];
+
 const DashboardLayout = ({ children }) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout>
+    <Layout className="h-full">
       <Sider
+        className="bg-[#071952]"
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -34,13 +41,16 @@ const DashboardLayout = ({ children }) => {
           //   console.log(collapsed, type);
         }}
       >
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["4"]}
-          items={items}
-        />
+        <div className="demo-logo-vertical " />
+
+        <Menu theme="dark" mode="inline" className="mt-14 bg-[#071952]">
+          <hr />
+          {items.map((item) => (
+            <Menu.Item key={item.key} icon={item.icon} className="mt-6">
+              <Link href={item.route}>{item.label}</Link>
+            </Menu.Item>
+          ))}
+        </Menu>
       </Sider>
       <Layout>
         <Header
@@ -48,7 +58,14 @@ const DashboardLayout = ({ children }) => {
             padding: 0,
             background: colorBgContainer,
           }}
-        />
+          className="flex justify-end items-center px-8"
+        >
+          <Avatar
+            size="large"
+            className="bg-[#071952]"
+            icon={<UserOutlined />}
+          />
+        </Header>
         <Content
           style={{
             margin: "24px 16px 0",
