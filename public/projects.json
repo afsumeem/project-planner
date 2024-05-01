@@ -33,17 +33,20 @@
       {
         "id": 201,
         "name": "John Smith",
-        "role": "UI/UX Designer"
+        "role": "UI/UX Designer",
+        "img": "/images/user.png"
       },
       {
         "id": 202,
         "name": "Emily Davis",
-        "role": "Frontend Developer"
+        "role": "Frontend Developer",
+        "img": "/images/user2.png"
       },
       {
         "id": 203,
         "name": "David Johnson",
-        "role": "Backend Developer"
+        "role": "Backend Developer",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -91,17 +94,20 @@
       {
         "id": 204,
         "name": "Sophia Brown",
-        "role": "UI/UX Designer"
+        "role": "UI/UX Designer",
+        "img": "/images/user2.png"
       },
       {
         "id": 205,
         "name": "Michael Johnson",
-        "role": "Frontend Developer"
+        "role": "Frontend Developer",
+        "img": "/images/user.png"
       },
       {
         "id": 206,
         "name": "Emma Wilson",
-        "role": "Backend Developer"
+        "role": "Backend Developer",
+        "img": "/images/user2.png"
       }
     ],
     "recentActivities": [
@@ -149,17 +155,20 @@
       {
         "id": 207,
         "name": "Sophia Brown",
-        "role": "UI/UX Designer"
+        "role": "UI/UX Designer",
+        "img": "/images/user2.png"
       },
       {
         "id": 208,
         "name": "David Johnson",
-        "role": "Backend Developer"
+        "role": "Backend Developer",
+        "img": "/images/user.png"
       },
       {
         "id": 209,
         "name": "Emily Davis",
-        "role": "Quality Assurance"
+        "role": "Quality Assurance",
+        "img": "/images/user2.png"
       }
     ],
     "recentActivities": [
@@ -207,17 +216,20 @@
       {
         "id": 210,
         "name": "John Smith",
-        "role": "Marketing Specialist"
+        "role": "Marketing Specialist",
+        "img": "/images/user.png"
       },
       {
         "id": 211,
         "name": "Emily Davis",
-        "role": "Content Writer"
+        "role": "Content Writer",
+        "img": "/images/user2.png"
       },
       {
         "id": 212,
         "name": "Michael Johnson",
-        "role": "Social Media Manager"
+        "role": "Social Media Manager",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -265,17 +277,20 @@
       {
         "id": 213,
         "name": "David Johnson",
-        "role": "Business Analyst"
+        "role": "Business Analyst",
+        "img": "/images/user.png"
       },
       {
         "id": 214,
         "name": "Sophia Brown",
-        "role": "UI/UX Designer"
+        "role": "UI/UX Designer",
+        "img": "/images/user2.png"
       },
       {
         "id": 215,
         "name": "Michael Johnson",
-        "role": "Backend Developer"
+        "role": "Backend Developer",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -323,17 +338,20 @@
       {
         "id": 216,
         "name": "John Smith",
-        "role": "Product Manager"
+        "role": "Product Manager",
+        "img": "/images/user.png"
       },
       {
         "id": 217,
         "name": "Emily Davis",
-        "role": "Marketing Specialist"
+        "role": "Marketing Specialist",
+        "img": "/images/user2.png"
       },
       {
         "id": 218,
         "name": "Michael Johnson",
-        "role": "Digital Marketer"
+        "role": "Digital Marketer",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -381,17 +399,20 @@
       {
         "id": 219,
         "name": "Sophia Brown",
-        "role": "Web Developer"
+        "role": "Web Developer",
+        "img": "/images/user2.png"
       },
       {
         "id": 220,
         "name": "David Johnson",
-        "role": "System Administrator"
+        "role": "System Administrator",
+        "img": "/images/user.png"
       },
       {
         "id": 221,
         "name": "Emily Davis",
-        "role": "Content Manager"
+        "role": "Content Manager",
+        "img": "/images/user2.png"
       }
     ],
     "recentActivities": [
@@ -439,17 +460,20 @@
       {
         "id": 222,
         "name": "John Smith",
-        "role": "Social Media Manager"
+        "role": "Social Media Manager",
+        "img": "/images/user.png"
       },
       {
         "id": 223,
         "name": "Emily Davis",
-        "role": "Marketing Specialist"
+        "role": "Marketing Specialist",
+        "img": "/images/user2.png"
       },
       {
         "id": 224,
         "name": "David Johnson",
-        "role": "Community Manager"
+        "role": "Community Manager",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -497,17 +521,20 @@
       {
         "id": 225,
         "name": "Sophia Brown",
-        "role": "Graphic Designer"
+        "role": "Graphic Designer",
+        "img": "/images/user2.png"
       },
       {
         "id": 226,
         "name": "Michael Johnson",
-        "role": "Brand Strategist"
+        "role": "Brand Strategist",
+        "img": "/images/user.png"
       },
       {
         "id": 227,
         "name": "David Johnson",
-        "role": "Marketing Consultant"
+        "role": "Marketing Consultant",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -555,17 +582,20 @@
       {
         "id": 228,
         "name": "John Smith",
-        "role": "Event Planner"
+        "role": "Event Planner",
+        "img": "/images/user.png"
       },
       {
         "id": 229,
         "name": "Emily Davis",
-        "role": "Marketing Specialist"
+        "role": "Marketing Specialist",
+        "img": "/images/user2.png"
       },
       {
         "id": 230,
         "name": "David Johnson",
-        "role": "Event Coordinator"
+        "role": "Event Coordinator",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -613,17 +643,20 @@
       {
         "id": 231,
         "name": "Sophia Brown",
-        "role": "Content Strategist"
+        "role": "Content Strategist",
+        "img": "/images/user2.png"
       },
       {
         "id": 232,
         "name": "Michael Johnson",
-        "role": "Content Creator"
+        "role": "Content Creator",
+        "img": "/images/user.png"
       },
       {
         "id": 233,
         "name": "David Johnson",
-        "role": "Editor"
+        "role": "Editor",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -671,17 +704,20 @@
       {
         "id": 234,
         "name": "John Smith",
-        "role": "SEO Specialist"
+        "role": "SEO Specialist",
+        "img": "/images/user.png"
       },
       {
         "id": 235,
         "name": "Emily Davis",
-        "role": "Content Writer"
+        "role": "Content Writer",
+        "img": "/images/user2.png"
       },
       {
         "id": 236,
         "name": "Michael Johnson",
-        "role": "Link Building Specialist"
+        "role": "Link Building Specialist",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -729,17 +765,20 @@
       {
         "id": 237,
         "name": "Sophia Brown",
-        "role": "Email Marketing Specialist"
+        "role": "Email Marketing Specialist",
+        "img": "/images/user2.png"
       },
       {
         "id": 238,
         "name": "David Johnson",
-        "role": "Content Writer"
+        "role": "Content Writer",
+        "img": "/images/user.png"
       },
       {
         "id": 239,
         "name": "Emily Davis",
-        "role": "Marketing Automation Specialist"
+        "role": "Marketing Automation Specialist",
+        "img": "/images/user2.png"
       }
     ],
     "recentActivities": [
@@ -787,17 +826,20 @@
       {
         "id": 240,
         "name": "John Smith",
-        "role": "Product Manager"
+        "role": "Product Manager",
+        "img": "/images/user.png"
       },
       {
         "id": 241,
         "name": "Sophia Brown",
-        "role": "Product Designer"
+        "role": "Product Designer",
+        "img": "/images/user2.png"
       },
       {
         "id": 242,
         "name": "Michael Johnson",
-        "role": "Quality Assurance"
+        "role": "Quality Assurance",
+        "img": "/images/user.png"
       }
     ],
     "recentActivities": [
@@ -845,17 +887,20 @@
       {
         "id": 243,
         "name": "Emily Davis",
-        "role": "Content Writer"
+        "role": "Content Writer",
+        "img": "/images/user2.png"
       },
       {
         "id": 244,
         "name": "Michael Johnson",
-        "role": "Videographer"
+        "role": "Videographer",
+        "img": "/images/user.png"
       },
       {
         "id": 245,
         "name": "Sophia Brown",
-        "role": "Video Editor"
+        "role": "Video Editor",
+        "img": "/images/user2.png"
       }
     ],
     "recentActivities": [

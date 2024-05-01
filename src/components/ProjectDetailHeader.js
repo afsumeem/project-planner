@@ -1,6 +1,7 @@
 import { Input, DatePicker, Select, Button } from "antd";
 import { CiSearch } from "react-icons/ci";
 import moment from "moment";
+import { FaCirclePlus } from "react-icons/fa6";
 
 const { Option } = Select;
 
@@ -79,14 +80,18 @@ const ProjectDetailHeader = ({
           value={dueDateFilter ? moment(dueDateFilter, "YYYY-MM-DD") : null}
           onChange={handleDatePickerChange}
           className="border border-gray-500"
-          dateRender={dateCellRender}
+          cellRender={dateCellRender}
         />
       </div>
 
       {/*  */}
 
-      <Button type="primary" className="bg-[#071952]" onClick={showModal}>
-        Add new task
+      <Button
+        type="primary"
+        className="bg-[#071952] flex items-center gap-1 h-10"
+        onClick={showModal}
+      >
+        <FaCirclePlus /> Add new task
       </Button>
     </div>
   );
