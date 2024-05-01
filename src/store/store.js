@@ -68,6 +68,25 @@ const projectStore = create((set) => ({
       return { projects: updatedProjects };
     });
   },
+
+  // Action to add a new task to a project
+  addTask: (projectId, newTask) => {
+    set((state) => {
+      const updatedProjects = state.projects.map((project) => {
+        if (project.id === projectId) {
+          return {
+            ...project,
+            tasks: [
+              ...project.tasks,
+              { ...newTask, id: project.tasks.length + 1 },
+            ],
+          };
+        }
+        return project;
+      });
+      return { projects: updatedProjects };
+    });
+  },
 }));
 
 // all project

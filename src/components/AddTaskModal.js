@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Modal, Form, Input, Button } from "antd";
+import { Modal, Form, Input, Select, DatePicker } from "antd";
+const { Option } = Select;
 
-const AddTaskModal = ({ visible, onCreate, onCancel }) => {
+const AddTaskModal = ({ visible, onCreate, onCancel, teamMembers }) => {
   const [form] = Form.useForm();
 
   const handleOk = () => {
@@ -18,7 +19,7 @@ const AddTaskModal = ({ visible, onCreate, onCancel }) => {
 
   return (
     <Modal
-      visible={visible}
+      open={visible}
       title="Add New Task"
       okText="Add"
       cancelText="Cancel"
@@ -39,6 +40,27 @@ const AddTaskModal = ({ visible, onCreate, onCancel }) => {
           rules={[{ required: true, message: "Please enter the description" }]}
         >
           <Input.TextArea />
+        </Form.Item>
+
+        <Form.Item
+          name="dueDate"
+          label="Due Date"
+          rules={[{ required: true, message: "Please select the due date" }]}
+        >
+          <DatePicker />
+        </Form.Item>
+        <Form.Item
+          name="assignee"
+          label="Assignee"
+          rules={[{ required: true, message: "Please select the assignee" }]}
+        >
+          <Select>
+            {teamMembers?.map((member) => (
+              <Option key={member?.id} value={member?.name}>
+                {member?.name}
+              </Option>
+            ))}
+          </Select>
         </Form.Item>
       </Form>
     </Modal>
