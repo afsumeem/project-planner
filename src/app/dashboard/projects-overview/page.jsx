@@ -1,17 +1,19 @@
 "use client";
 
 import EditProjectModal from "@/components/EditProjectModal";
-import projectStore, { useAllProjects } from "@/store/store";
-// import useAllProjects from "@/store/store";
+import projectStore from "@/store/store";
+import { useAllProjects } from "@/store/store";
 import Link from "next/link";
 
 const ProjectsOverview = () => {
   const { projects } = useAllProjects();
 
   // delete project
-  const handleDelete = (projectId) => {
-    projectStore.deleteProject(projectId);
-  };
+  // const handleDelete = (projectId) => {
+  //   console.log(projectId);
+  //   projectStore.deleteProject(projectId);
+  // };
+
   return (
     <div>
       {projects &&
