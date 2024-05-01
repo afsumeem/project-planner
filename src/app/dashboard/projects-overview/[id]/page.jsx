@@ -10,6 +10,9 @@ const ProjectDetailPage = ({ params }) => {
   const [statusFilter, setStatusFilter] = useState("All");
   const [assigneeFilter, setAssigneeFilter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [dueDateFilter, setDueDateFilter] = useState("");
+
+  //
 
   //  status filter
   const handleFilter = (value) => {
@@ -30,10 +33,17 @@ const ProjectDetailPage = ({ params }) => {
     projectStore.getState().setSearchTerm(e.target.value);
   };
 
-  // Access filter and searchTerm
+  // due date
+  const handleDueDateFilter = (value) => {
+    setDueDateFilter(value);
+    projectStore.getState().setDueDateFilter(value);
+  };
+
+  // Access filter and searchTerm from store
   const filter = projectStore((state) => state.filter);
   const searchTermFromStore = projectStore((state) => state.searchTerm);
   const assigneeFilterFromStore = projectStore((state) => state.assigneeFilter);
+  const dueDateFilterFromStore = projectStore((state) => state.dueDateFilter);
 
   return (
     <div>
@@ -66,6 +76,14 @@ const ProjectDetailPage = ({ params }) => {
         ))}
       </select>
 
+      {/*  */}
+
+      <input
+        type="date"
+        value={dueDateFilter}
+        onChange={(e) => handleDueDateFilter(e.target.value)}
+      />
+      {/*  */}
       <h2>Project Detail: {project?.name}</h2>
       <p>{project?.description}</p>
       <p> tasks:</p>
@@ -77,6 +95,11 @@ const ProjectDetailPage = ({ params }) => {
             (task) =>
               task.assignee === assigneeFilterFromStore ||
               assigneeFilterFromStore === ""
+          )
+          .filter(
+            (task) =>
+              task.dueDate === dueDateFilterFromStore ||
+              dueDateFilterFromStore === ""
           )
           .filter((task) =>
             task.title.toLowerCase().includes(searchTermFromStore.toLowerCase())
