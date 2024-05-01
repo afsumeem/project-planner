@@ -1,46 +1,48 @@
-"use client";
-
 import { useQuery } from "@tanstack/react-query";
 
-const fetchProjects = async () => {
-  const response = await fetch("http://localhost:5000/projects");
-  return response.json();
-};
-
-const fetchProjectById = async (projectId) => {
-  const response = await fetch(`http://localhost:5000/projects/${projectId}`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch project detail");
-  }
-  return response.json();
-};
-
 //  fetch all projects
-export const useProjects = () => {
+
+export const fetchProjects = async () => {
+  const response = await fetch("/projects.json");
+  const allProjectsData = response.json();
+  return allProjectsData;
+};
+
+export const useAllProjectsApi = () => {
   const {
     isPending,
     error,
-    data: projectData = [],
+    data: projectData,
   } = useQuery({
     queryKey: ["projects"],
     queryFn: fetchProjects,
     enabled: true,
   });
 
-  return [projectData];
+  return { projectData, isPending, error };
 };
+
+//fetch single project
+
+// export const fetchProjectById = async (projectId) => {
+//   const allProjectsData = await fetchProjects();
+//   const projectData = allProjectsData.find(
+//     (project) => project?.id === parseInt(projectId)
+//   );
+//   return projectData;
+// };
 
 // fetch single project
-export const useProjectById = (projectId) => {
-  const {
-    data: projectData,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ["project", projectId],
-    queryFn: () => fetchProjectById(projectId),
-    enabled: !!projectId,
-  });
-
-  return projectData;
-};
+// export const useProjectByIdApi = (projectId) => {
+//   const {
+//     data: singleData,
+//     error,
+//     isPending,
+//   } = useQuery({
+//     queryKey: ["project", projectId],
+//     queryFn: () => fetchProjectById(projectId),
+//     enabled: !!projectId,
+//   });
+//   console.log(singleData);
+//   return { singleData, isPending, error };
+// };
