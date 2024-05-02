@@ -12,7 +12,7 @@ import { useState } from "react";
 //
 
 const ProjectsOverview = () => {
-  const { projects } = useAllProjects();
+  const { projects, deleteProject } = useAllProjects();
   const [editVisible, setEditVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [forceUpdate, setForceUpdate] = useState(false);
@@ -23,9 +23,7 @@ const ProjectsOverview = () => {
 
   // delete project
   const handleDelete = (projectId) => {
-    console.log(projectId);
-    projectStore.getState().deleteProject(projectId);
-    setForceUpdate(!forceUpdate);
+    deleteProject(projectId);
   };
   //
 

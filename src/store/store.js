@@ -126,6 +126,10 @@ export const useAllProjects = () => {
   }
   projectStore.setState({ projects: projectData });
 
+  // const deleteProject = (projectId) => {
+  //   projectStore.getState().deleteProject(projectId);
+  // };
+
   return { projects: projectData, isPending, error };
 };
 

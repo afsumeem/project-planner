@@ -1,8 +1,8 @@
-## [Project Planner+ Live Site](https://project-planner-nine.vercel.app/)
+## [Project Planner Live Site](https://project-planner-nine.vercel.app/)
 
 ## Project Planner Overview
 
-Project Planner+ is a web-based project management dashboard built with Next.js. Project Planner provides a user-friendly interface for managing projects, tasks, team members, and recent activity. It includes features such as task creation, editing, marking as complete, filtering tasks by status and assignee, searching tasks by title, and drag-and-drop functionality for task status updates.
+Project Planner is a project management dashboard built with Next.js. It provides a user-friendly interface for managing projects, tasks, team members, and recent activity. It includes features such as task creation, editing, marking as complete, filtering tasks by status and assignee, searching tasks by title, and drag-and-drop functionality for task status updates.
 
 ### Project Architecture
 
