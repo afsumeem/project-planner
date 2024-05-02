@@ -156,7 +156,7 @@ const ProjectDetailPage = ({ params }) => {
             {/*  */}
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2 mt-10">
-              <div className="grid grid-cols-1">
+              <div className="col-span-1">
                 <div className="bg-[#c7c5c5] py-2 rounded">
                   <p className="font-bold text-center text-xl m-0 p-0">
                     All Task

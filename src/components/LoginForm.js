@@ -53,6 +53,9 @@ const LoginForm = () => {
   return (
     <div className="w-full h-full flex justify-center items-center  login-page-container bg-cover m-0 p-0">
       <div className="w-full md:w-1/2 lg:w-1/4 rounded-xl m-0 p-10 login-container">
+        <p className="m-0 p-0 mb-5 text-white text-center font-bold text-xl">
+          Project Planner+
+        </p>
         <Form
           form={form}
           name="loginForm"
@@ -87,19 +90,19 @@ const LoginForm = () => {
             </Button>
           </Form.Item>
         </Form>
-        <div className="">
+        <div className="flex gap-4 justify-center">
           <CopyToClipboard text={userId} onCopy={handleCopyUserId}>
-            <div className="flex gap-2 cursor-pointer">
-              <p className="text-sm text-white">{userId}</p>
-              <FaRegCopy className="text-white mt-1 " />
+            <div className="flex items-center gap-2 cursor-pointer">
+              <p className="text-base text-white">{userId}</p>
+              <FaRegCopy className="text-white " />
             </div>
           </CopyToClipboard>
 
           <CopyToClipboard text={password} onCopy={handleCopyPassword}>
-            <div className="flex gap-2 cursor-pointer">
-              <p className="text-sm text-white">{password} </p>
+            <div className="flex gap-2 items-center cursor-pointer">
+              <p className="text-base text-white">{password} </p>
 
-              <FaRegCopy className="text-white mt-1" />
+              <FaRegCopy className="text-white " />
             </div>
           </CopyToClipboard>
         </div>
