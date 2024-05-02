@@ -5,21 +5,41 @@ import projectStore from "@/store/store";
 import { useAllProjects } from "@/store/store";
 import Link from "next/link";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
-import { Space, Table, Tag } from "antd";
+import { Button, Table } from "antd";
+import { CiEdit } from "react-icons/ci";
+import { useState } from "react";
 
 //
 
 const ProjectsOverview = () => {
   const { projects } = useAllProjects();
+  const [editVisible, setEditVisible] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [forceUpdate, setForceUpdate] = useState(false);
+
+  const handleCancel = () => {
+    setEditVisible(false);
+  };
 
   // delete project
   const handleDelete = (projectId) => {
     console.log(projectId);
     projectStore.getState().deleteProject(projectId);
+    setForceUpdate(!forceUpdate);
+  };
+  //
+
+  const handleEdit = (record) => {
+    setSelectedProject(record);
+    setEditVisible(true);
+  };
+  const handleUpdate = (projectId, updatedValues) => {
+    projectStore.getState().editProject(projectId, updatedValues);
+    setEditVisible(false);
+    setForceUpdate(!forceUpdate);
   };
 
-  //
+  //table column
   const columns = [
     {
       title: "ID",
@@ -41,11 +61,13 @@ const ProjectsOverview = () => {
       ),
     },
     {
-      title: "Name",
+      title: "Project Name",
       dataIndex: "name",
       key: "name",
       render: (text, record, index) => ({
-        children: <a className="text-blue-800 hover:text-blue-800">{text}</a>,
+        children: (
+          <a className="text-black hover:text-black font-semibold">{text}</a>
+        ),
         props: {
           style: {
             background: index % 2 === 0 ? "#f0f0f0" : "#D2DAFF",
@@ -55,7 +77,7 @@ const ProjectsOverview = () => {
       }),
       title: () => (
         <div className="text-center">
-          <span style={{ color: "#ffffff" }}>Name</span>
+          <span style={{ color: "#ffffff" }}>Project Name</span>
         </div>
       ),
     },
@@ -85,7 +107,12 @@ const ProjectsOverview = () => {
       key: "view",
       render: (text, record, index) => ({
         children: (
-          <Link href={`/dashboard/projects-overview/${record.id}`}>View</Link>
+          <Link
+            href={`/dashboard/projects-overview/${record.id}`}
+            className="font-bold underline"
+          >
+            View
+          </Link>
         ),
         props: {
           style: {
@@ -105,7 +132,20 @@ const ProjectsOverview = () => {
       dataIndex: "edit",
       key: "edit",
       render: (text, record, index) => ({
-        children: <EditProjectModal />,
+        children: (
+          // <EditProjectModal
+          //   project={record}
+          //   onUpdate={(projectId, updatedValues) =>
+          //     handleUpdateProject(projectId, updatedValues)
+          //   }
+          // />
+          <Button
+            onClick={() => handleEdit(record)}
+            className="flex justify-end items-center gap-1 bg-[#071952] text-white"
+          >
+            <CiEdit /> Edit
+          </Button>
+        ),
         props: {
           style: {
             background: index % 2 === 0 ? "#f0f0f0" : "#D2DAFF",
@@ -150,6 +190,7 @@ const ProjectsOverview = () => {
   return (
     <div>
       <Table
+        key={forceUpdate}
         columns={columns}
         bordered
         size="middle"
@@ -169,6 +210,13 @@ const ProjectsOverview = () => {
             <button onClick={() => handleDelete(data.id)}>Delete</button>
           </div>
         ))} */}
+
+      <EditProjectModal
+        visible={editVisible}
+        onCancel={handleCancel}
+        onUpdate={handleUpdate}
+        project={selectedProject}
+      />
     </div>
   );
 };

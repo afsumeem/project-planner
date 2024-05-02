@@ -6,6 +6,8 @@ import { FaRegCalendarMinus } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
 
 const TaskDetail = ({ task, handleEditClick, markAsComplete, project }) => {
+  const isTaskCompleted = task?.status === "Done";
+
   return (
     <div>
       {" "}
@@ -16,7 +18,9 @@ const TaskDetail = ({ task, handleEditClick, markAsComplete, project }) => {
               ? "bg-[#ffb6ac]"
               : task?.status === "In Progress"
               ? "bg-[#f7f89a]"
-              : "bg-[#a4ff9c]"
+              : task.status === "Done"
+              ? "bg-[#E2F4C5]"
+              : "bg-inherit"
           }`}
         >
           {task?.title}
@@ -26,7 +30,9 @@ const TaskDetail = ({ task, handleEditClick, markAsComplete, project }) => {
             onClick={() => markAsComplete(project?.id, task?.id)}
             className="border-0 bg-inherit text-lg cursor-pointer"
           >
-            <FaCircleCheck />
+            <FaCircleCheck
+              style={{ color: isTaskCompleted ? "green" : "inherit" }}
+            />
           </button>
         </Tooltip>
       </div>

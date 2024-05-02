@@ -36,20 +36,21 @@ const ProjectDetailHeader = ({
     return date.date();
   };
   return (
-    <div className="flex justify-between mb-4">
-      <div className="flex gap-2">
+    <div className="flex flex-col gap-2 md:flex-row justify-between mb-4">
+      <div className="flex flex-col  md:flex-row  gap-2">
         {/* search input */}
         <Input
           type="text"
           placeholder="Search tasks by title..."
           value={searchTerm}
           onChange={handleSearch}
-          className="border border-gray-500"
+          className="border border-gray-500 "
           prefix={<CiSearch />}
         />
 
         {/* status filter */}
         <Select
+          className="h-10"
           value={statusFilter}
           onChange={(value) => handleFilter(value)}
           style={{ border: "1px solid gray", borderRadius: "7px" }}
@@ -62,6 +63,7 @@ const ProjectDetailHeader = ({
 
         {/* task assignee filter */}
         <Select
+          className="h-10"
           value={assigneeFilter}
           onChange={(value) => handleAssigneeFilter(value)}
           // className="border border-gray-700"
@@ -80,6 +82,7 @@ const ProjectDetailHeader = ({
           value={dueDateFilter ? moment(dueDateFilter, "YYYY-MM-DD") : null}
           onChange={handleDatePickerChange}
           className="border border-gray-500"
+          inputClassName="custom-input-class"
           cellRender={dateCellRender}
         />
       </div>

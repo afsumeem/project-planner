@@ -22,3 +22,11 @@
   .ant-table-cell {
   background-color: #071952;
 }
+
+.ant-input::placeholder {
+  color: #585858 !important;
+}
+
+.custom-input-class ::placeholder {
+  color: #585858 !important;
+}

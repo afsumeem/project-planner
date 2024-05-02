@@ -8,11 +8,10 @@ import { SiTicktick } from "react-icons/si";
 import RecentActivity from "@/components/RecentActivity";
 import TeamMember from "@/components/TeamMember";
 import { Button } from "antd";
-import { FaCirclePlus } from "react-icons/fa6";
 import Link from "next/link";
 
 const DashboardHome = () => {
-  // all post from store
+  // all project from store
   const { projects } = useAllProjects();
 
   // total tasks

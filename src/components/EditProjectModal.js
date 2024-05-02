@@ -1,69 +1,56 @@
 "use client";
 
-import { Modal, Button, Checkbox, Form, Input } from "antd";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { Modal, Form, Input } from "antd";
 
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
+const EditProjectModal = ({ visible, onUpdate, onCancel, project }) => {
+  const [form] = Form.useForm();
 
-const EditProjectModal = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  // Set initial form values
+  useEffect(() => {
+    form.setFieldsValue({
+      name: project?.name,
+      description: project?.description,
+    });
+  }, [visible, project, form]);
 
+  const handleOk = () => {
+    form
+      .validateFields()
+      .then((values) => {
+        form.resetFields();
+        onUpdate(project.id, values);
+      })
+      .catch((errorInfo) => {
+        console.log("Validation failed:", errorInfo);
+      });
+  };
   return (
-    <div>
-      <Button type="primary" onClick={() => setModalOpen(true)}>
-        Edit
-      </Button>
-      <Modal
-        title="Edit Project"
-        centered
-        open={modalOpen}
-        onOk={() => setModalOpen(false)}
-        onCancel={() => setModalOpen(false)}
-      >
-        <Form
-          name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
-          style={{
-            maxWidth: 600,
-          }}
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
+    <Modal
+      open={visible}
+      title="Edit Project"
+      okText="Save"
+      cancelText="Cancel"
+      onCancel={onCancel}
+      onOk={handleOk}
+    >
+      <Form form={form} layout="vertical" name="editProjectForm">
+        <Form.Item
+          name="name"
+          label="Name"
+          rules={[{ message: "Please enter new project Name" }]}
         >
-          <Form.Item label="Name" name="name">
-            <Input />
-          </Form.Item>
-
-          <Form.Item label="Description" name="description">
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-      </Modal>
-    </div>
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="description"
+          label="Description"
+          rules={[{ message: "Please enter updated description" }]}
+        >
+          <Input.TextArea />
+        </Form.Item>
+      </Form>
+    </Modal>
   );
 };
 

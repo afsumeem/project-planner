@@ -12,6 +12,16 @@ const projectStore = create((set) => ({
   // set state
   setProject: (projects) => set({ projects: projects }),
 
+  // edit project
+
+  editProject: (projectId, updatedProject) => {
+    set((state) => ({
+      projects: state.projects.map((project) =>
+        project.id === projectId ? { ...updatedProject } : project
+      ),
+    }));
+  },
+
   // add new project
   addNewProject: (newProject) =>
     set((state) => ({
@@ -128,5 +138,7 @@ export const useProjectById = (projectId) => {
 
   return project;
 };
+
+//
 
 export default projectStore;
