@@ -25,4 +25,7 @@ Project Planner follows a component-based architecture. Here's an overview of th
 
 The app will be available at `http://localhost:3000`
 
+- email: `test@gmail.com`
+- pass: `abcd1234`
+
 To get started, users need to log in with their credentials.After logging in successfully, they will be directed to the dashboard, where user can manage projects, tasks, and team members.
