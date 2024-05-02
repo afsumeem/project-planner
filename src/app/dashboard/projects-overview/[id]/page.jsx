@@ -228,6 +228,7 @@ const ProjectDetailPage = ({ params }) => {
                 <div
                   onDragOver={(e) => handleDragOver(e)}
                   onDrop={(e) => handleDrop(e, "To Do")}
+                  className="empty-drop-area"
                 >
                   {project?.tasks
                     .filter((task) => task.status === "To Do")
@@ -260,6 +261,7 @@ const ProjectDetailPage = ({ params }) => {
                 <div
                   onDragOver={(e) => handleDragOver(e)}
                   onDrop={(e) => handleDrop(e, "In Progress")}
+                  className="empty-drop-area"
                 >
                   {project?.tasks
                     .filter((task) => task.status === "In Progress")
@@ -268,7 +270,7 @@ const ProjectDetailPage = ({ params }) => {
                         key={task.id}
                         draggable
                         onDragStart={(e) => handleDragStart(e, task)}
-                        className="p-4 shadow-md my-2 bg-[#FFFBDA]"
+                        className="p-4 shadow-md my-2 bg-[#FFFBDA] "
                       >
                         <TaskDetail
                           task={task}
@@ -290,6 +292,7 @@ const ProjectDetailPage = ({ params }) => {
                 <div
                   onDragOver={(e) => handleDragOver(e)}
                   onDrop={(e) => handleDrop(e, "Done")}
+                  className="empty-drop-area"
                 >
                   {project?.tasks
                     .filter((task) => task.status === "Done")

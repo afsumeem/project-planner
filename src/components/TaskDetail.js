@@ -19,7 +19,7 @@ const TaskDetail = ({ task, handleEditClick, markAsComplete, project }) => {
               : task?.status === "In Progress"
               ? "bg-[#f7f89a]"
               : task.status === "Done"
-              ? "bg-[#E2F4C5]"
+              ? "bg-[#a4ff9c]"
               : "bg-inherit"
           }`}
         >

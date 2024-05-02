@@ -30,3 +30,7 @@
 .custom-input-class ::placeholder {
   color: #585858 !important;
 }
+
+.empty-drop-area {
+  min-height: 500px;
+}
