@@ -2,11 +2,10 @@
 
 import { UserOutlined } from "@ant-design/icons";
 import { GoProjectSymlink } from "react-icons/go";
-
 import { Avatar } from "antd";
-
 import { Layout, Menu, theme } from "antd";
 import Link from "next/link";
+import moment from "moment";
 const { Header, Content, Footer, Sider } = Layout;
 
 const items = [
@@ -23,8 +22,17 @@ const items = [
     route: "/dashboard/projects-overview",
   },
 ];
+// current date and time
+
+const getCurrentDateTime = () => {
+  const currentDateTime = moment().format("dddd, MMMM DD, h:mm A");
+
+  return currentDateTime;
+};
 
 const DashboardLayout = ({ children }) => {
+  const dateTime = getCurrentDateTime();
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -58,13 +66,17 @@ const DashboardLayout = ({ children }) => {
             padding: 0,
             background: colorBgContainer,
           }}
-          className="flex justify-end items-center px-8"
+          className="flex justify-between items-center px-8"
         >
-          <Avatar
-            size="large"
-            className="bg-[#071952]"
-            icon={<UserOutlined />}
-          />
+          <p className="font-bold"> {dateTime}</p>
+          <div className="flex items-center">
+            <p className="px-4 font-semibold cursor-pointer">Welcome Admin</p>
+            <Avatar
+              size="large"
+              className="bg-[#071952]"
+              icon={<UserOutlined />}
+            />
+          </div>
         </Header>
         <Content
           style={{
