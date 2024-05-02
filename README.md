@@ -15,16 +15,14 @@ Project Planner follows a component-based architecture. Here's an overview of th
 
 ### Setup Instruction
 
-- Clone the Repository
-  git clone <https://github.com/afsumeem/project-planner.git>
-  cd project-planner
+- Clone the Repository-
+  `git clone https://github.com/afsumeem/project-planner.git`
+- `cd project-planner`
 
-- Install Dependencies
-  npm install
+- Install Dependencies- `npm install`
 
-- Run the Development Server
-  npm run dev
+- Run the Development Server- `npm run dev`
 
-The app will be available at http://localhost:3000.
+The app will be available at `http://localhost:3000`
 
 To get started, users need to log in with their credentials.After logging in successfully, they will be directed to the dashboard, where user can manage projects, tasks, and team members.
